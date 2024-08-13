@@ -146,7 +146,7 @@ export default function Post() {
                 onClick={handleLike}
               >
                 {liked ? (
-                  <FontAwesomeIcon icon={faHeart} className="text-customPurple" />
+                  <FontAwesomeIcon icon={faHeart} className="text-red" />
                 ) : (
                   <FontAwesomeIcon icon={faHeart} className="text-customGray" />
                 )}
