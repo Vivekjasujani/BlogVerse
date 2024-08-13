@@ -31,7 +31,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <div className='min-h-screen flex flex-wrap content-between text-white bg-[#00040F] items-center justify-center'>
+    <div className='min-h-screen w-full flex flex-wrap content-between text-white bg-[#00040F] items-center justify-center'>
       {loading && (
         <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-[#00040F]">
           <Loader />

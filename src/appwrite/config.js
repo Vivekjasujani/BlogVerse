@@ -240,9 +240,9 @@ export class Service {
 
       return result.documents.map((user) => user.userId);
 
-      if (result.documents.length > 1) {
-        //+ one-two more
-      }
+      // if (result.documents.length > 1) {
+      //   //+ one-two more
+      // }
     } catch (error) {
       console.log("Error showing usernames");
     }

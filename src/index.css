@@ -12,15 +12,16 @@
 body {
     background: rgb(0 0 0/var(--tw-bg-opacity));
     scroll-behavior: smooth;
+    
 }
 
 .hero-heading {
-    /* color: #FFF;
+    color: #FFF;
     font-family: Poppins;
     font-style: normal;
     font-weight: 600;
     line-height: 140%;
-    letter-spacing: 0.72px; */
+    letter-spacing: 0.72px;
     font-family: "Plus Jakarta Sans", "Nunito" ,sans-serif !important;
     text-align: center;
     letter-spacing: -.04em;
