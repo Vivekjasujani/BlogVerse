@@ -34,13 +34,13 @@ function Login() {
         }
     };
 
-    const handleRecruiterDemoLogin = async () => {
-        const testCredentials = {
-            email: 'talentseeker.logincheck@gmail.com',
-            password: '12345678'
-        };
-        await login(testCredentials);
-    };
+    // const handleRecruiterDemoLogin = async () => {
+    //     const testCredentials = {
+    //         email: 'talentseeker.logincheck@gmail.com',
+    //         password: '12345678'
+    //     };
+    //     await login(testCredentials);
+    // };
 
     return (
         <div className=' items-center justify-center md:min-h-[80vh] text-sm'>
@@ -100,11 +100,11 @@ function Login() {
                     </div>
                 </form>
             </div>
-            <MovingButton
+            {/* <MovingButton
                 onClick={handleRecruiterDemoLogin}
                 className="rounded-lg border-slate-800">
                     Login with Demo Account
-                </MovingButton>
+                </MovingButton> */}
         </div>
     );
 }

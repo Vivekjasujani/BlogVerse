@@ -6,7 +6,7 @@ import {
   useMotionValue,
   useTransform,
 } from "framer-motion";
-import {cn} from '../../utils/cn';
+import {cn} from '@/utils/cn';
 
 
 export function MovingButton({
