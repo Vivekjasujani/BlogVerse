@@ -17,16 +17,11 @@ function Signup() {
         setError("");
         setLoading(true);
         try {
-            // Create the account
             const userData = await authService.createAccount(data);
             if (userData) {
-                // Log the user in
-                await authService.login(data.email, data.password);
-                const currentUser = await authService.getCurrentUser();
-                if (currentUser) {
-                    dispatch(login(currentUser));
-                    navigate("/");
-                }
+                const userData = await authService.getCurrentUser();
+                if (userData) dispatch(login(userData));
+                navigate("/");
             }
         } catch (error) {
             setError(error.message);
@@ -38,6 +33,7 @@ function Signup() {
     return (
         <div className="items-center justify-center md:min-h-[80vh] text-sm">
             <div className={`mx-auto w-full md:max-w-sm rounded-xl p-5 md:p-8 border-slate-800 border `}>
+
                 <div className="mb-4 flex justify-center">
                     <span className="inline-block w-full max-w-[80px]">
                         <Logo width="100%" />
