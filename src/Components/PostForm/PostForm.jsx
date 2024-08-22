@@ -124,12 +124,13 @@ function PostForm({ post }) {
                         />
                     </div>
                 )}
-                <Select
+                {/* <Select
                     options={["active", "inactive"]}
+                    type="hidden"
                     label="Status"
                     className="mb-4 border border-gray-600 text-white rounded-lg bg-black bg-opacity-80 focus:bg-opacity-90 focus:outline focus:ring-none"
                     {...register("status", { required: true })}
-                />
+                /> */}
                 {loading ? 
                     <div className='w-full grid place-items-center'><Loader /></div>
                     :
@@ -142,3 +143,4 @@ function PostForm({ post }) {
 }
 
 export default PostForm;
+
