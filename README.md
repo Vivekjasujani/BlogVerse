@@ -51,7 +51,7 @@ Appwrite serves as the backbone, streamlining backend operations and enhancing t
 
 ## 🚀 Deployment
 
-BlogVerse is accessible on [Demo Link](https://blog-verse-phi.vercel.app/), providing a convenient platform for users to experience the application.
+BlogVerse is accessible on [Demo Link](https://blog-verse-two.vercel.app/), providing a convenient platform for users to experience the application.
 
 ## 📞 Contact Information
 
