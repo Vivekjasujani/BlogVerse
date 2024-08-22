@@ -129,13 +129,13 @@ function PostForm({ post }) {
                         />
                     </div>
                 )}
-                <Select
+                {/* <Select
                     options={["active", "inactive"]}
                     label="Status"
                     style={{'backgroundColor': 'black', 'color': 'white'}}
                     className="mb-4 border border-gray-600 text-white rounded-lg bg-black focus:bg-black focus:outline focus:ring-none"
                     {...register("status", { required: true })}
-                />
+                /> */}
                 {loading? 
                     <div className='w-full grid place-items-center'> <Loader></Loader></div>
                     :
