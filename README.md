@@ -56,4 +56,4 @@ BlogVerse is accessible on [Demo Link](https://blog-verse-two.vercel.app/), prov
 ## 📞 Contact Information
 
 - **GitHub:** [Vivekjasujani ](https://github.com/Vivekjasujani)
-- **LinkedIn:** [Vivek Jasujani](www.linkedin.com/in/vivek-jasujani-907526224)
+- **LinkedIn:** [Vivek Jasujani](https://www.linkedin.com/in/vivek-jasujani-907526224/)
