@@ -1,11 +1,10 @@
 import React from "react";
-import appwriteService from "../appwrite/config";
 import { Link } from "react-router-dom";
 import { IoReaderOutline } from "react-icons/io5";
 import { BiLike } from "react-icons/bi";
 import calculateReadingTime from "../utils/readingTime";
 function MiniPostCard({
-  $id,
+  slug,
   title,
   featuredImage,
   author,
@@ -15,11 +14,11 @@ function MiniPostCard({
 }) {
   const readingTime = calculateReadingTime(content);
   return (
-    <Link to={`/post/${$id}`}>
+    <Link to={`/post/${slug}`}>
       <div className="w-full flex flex-col items-center border border-gray-800 text-left hover:bg-gray-900 rounded-xl p-4 h-full">
         <div className="w-full flex justify-center mb-4 h-[80%]">
           <img
-            src={appwriteService.getFilePreview(featuredImage)}
+            src={featuredImage}
             alt={title}
             className="rounded-xl h-full object-cover"
           />

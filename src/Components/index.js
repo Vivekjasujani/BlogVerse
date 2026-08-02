@@ -13,6 +13,7 @@ import PostCard from "./PostCard";
 import AuthLayout from "./AuthLayout";
 import Input from "./Input";
 import Loader from "./Loader";
+import MiniLoader from "./MiniLoader";
 
 export {
   Header,
@@ -29,5 +30,6 @@ export {
   AuthLayout,
   Input,
   Select,
-  Loader
+  Loader,
+  MiniLoader
 };

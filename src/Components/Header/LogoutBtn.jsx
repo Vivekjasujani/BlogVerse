@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import authService from '../../appwrite/auth';
+import authService from '../../api/authService';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../store/authSlice';
 import Loader from '../Loader';

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import authService from "../appwrite/auth.js";
+import authService from "../api/authService";
 import Loader from "../Components/Loader.jsx";
-import appwriteService from "../appwrite/config";
+import postService from "../api/postService";
 import { Link } from "react-router-dom";
 
 import MiniPostCard from "../Components/MiniPostCard.jsx";
@@ -28,7 +28,7 @@ const Profile = () => {
         if (currentUser.$id === userId) {
           setUser(currentUser);
         } else {
-          const userProfile = await auth.getUserProfile(userId);
+          const { user: userProfile } = await postService.getProfile(userId);
           if (userProfile) {
             setUser(userProfile);
           } else {
@@ -46,13 +46,11 @@ const Profile = () => {
 
     const getUserProfileAbouts = async () => {
       try {
-        const userAbouts = await appwriteService.getUserAbouts(userId);
-        if (userAbouts) {
-          setLocation(userAbouts.location);
-          setAboutMe(userAbouts.About);
-        }
+        const { user: userProfile } = await postService.getProfile(userId);
+        setLocation(userProfile.location || "");
+        setAboutMe(userProfile.about || "");
       } catch (error) {
-        console.error("Failed to fetch or create user abouts", error);
+        console.error("Failed to fetch profile details", error);
       }
     };
     getUserProfileAbouts();
@@ -62,21 +60,12 @@ const Profile = () => {
     const fetchUserRelatedData = async () => {
       if (user) {
         try {
-          const posts = await appwriteService.getPosts([]);
-          const likedPosts = await appwriteService.getLikedPosts(user.$id);
-          const IdsOfLikedPosts = likedPosts.documents.map(
-            (post) => post.postId
-          );
-          if (posts) {
-            setPostsAuthored(
-              posts.documents.filter((post) => post.userId === user.$id)
-            );
-            setPostsLiked(
-              posts.documents.filter((post) =>
-                IdsOfLikedPosts.includes(post.$id)
-              )
-            );
-          }
+          const posts = await postService.getUserPosts(user.$id);
+          const likedPosts = user.$id === (await authService.getCurrentUser())?.$id
+            ? await postService.getMyLikedPosts()
+            : [];
+          setPostsAuthored(posts);
+          setPostsLiked(likedPosts);
         } catch (error) {
           console.error("Failed to fetch posts or liked posts", error);
         } finally {
@@ -92,7 +81,7 @@ const Profile = () => {
     if (!edit) return;
     try {
       const userId = user.$id;
-      await appwriteService.updateUserAbouts(userId, location, aboutMe);
+      await postService.updateMyProfile({ location, about: aboutMe });
     } catch (error) {
       console.error("Failed to update profile", error);
     }

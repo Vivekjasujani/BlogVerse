@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, PostCard, Button, Loader } from '../Components';
-import appwriteService from "../appwrite/config";
+import postService from "../api/postService";
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -12,7 +12,7 @@ function AllPosts() {
 
   useEffect(() => {
     const delayLoading = setTimeout(() => {
-      appwriteService.getPosts([]).then((posts) => {
+      postService.getPosts().then((posts) => {
         if (posts) {
           setPosts(posts.documents);
           setLoading(false);

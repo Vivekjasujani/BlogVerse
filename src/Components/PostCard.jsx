@@ -1,5 +1,4 @@
 import React from "react";
-import appwriteService from "../appwrite/config";
 import { Link } from "react-router-dom";
 import UserProfilePhoto from "./ui/userProfilePhoto";
 import parse from "html-react-parser";
@@ -8,7 +7,7 @@ import { IoReaderOutline } from "react-icons/io5";
 import { BiLike } from "react-icons/bi";
 
 function PostCard({
-  $id,
+  slug,
   title,
   featuredImage,
   author,
@@ -28,7 +27,7 @@ function PostCard({
   const readingTime = calculateReadingTime(content);
 
   return (
-    <Link to={`/post/${$id}`}>
+    <Link to={`/post/${slug}`}>
       <div className="flex flex-col border border-gray-900 rounded-lg p-4 lg:h-[260px] hover:bg-gray-900">
         <div className="grid md:grid-cols-3 ">
           <div className="flex flex-col md:col-span-2 items-center justify-start gap-2 lg:mr-3">
@@ -53,7 +52,7 @@ function PostCard({
           </div>
           <div className=" flex items-center justify-center w-full my-2">
             <img
-              src={appwriteService.getFilePreview(featuredImage)}
+              src={featuredImage}
               alt={title}
               className="rounded-xl w-full sm:w-[12rem] max-h-[12rem] max-w-full lg:min-h-[12rem] object-cover"
             />
