@@ -108,7 +108,56 @@ The backend is built with Express.js and MongoDB, featuring:
 
 ## 🚀 Deployment
 
-BlogVerse is accessible on [Demo Link](https://blog-verse-two.vercel.app/), providing a convenient platform for users to experience the application.
+### Live Demo
+- **Frontend:** [BlogVerse](https://blog-verse-ee9w-pv5k4sc0z-vivekjasujanis-projects.vercel.app/)
+- **Backend API:** [BlogVerse API](https://blogverse-api-of87.onrender.com/)
+
+### Deployment Guide
+
+#### Backend Deployment (Render)
+
+1. **Push code to GitHub** if not already done
+2. Go to [render.com](https://render.com) and sign up
+3. Create a new **Web Service**
+4. Connect your GitHub repository
+5. Configure:
+   - **Name:** blogverse-api
+   - **Root Directory:** `server`
+   - **Build Command:** `npm install`
+   - **Start Command:** `node src/server.js`
+6. Add Environment Variables:
+   ```
+   NODE_ENV=production
+   PORT=5000
+   CLIENT_URL=https://your-frontend-url.vercel.app
+   MONGODB_URI=mongodb+srv://<username>:<password>@<cluster>/blogverse?retryWrites=true&w=majority
+   JWT_SECRET=your-secret-key
+   JWT_EXPIRES_IN=7d
+   CLOUDINARY_CLOUD_NAME=your-cloud-name
+   CLOUDINARY_API_KEY=your-api-key
+   CLOUDINARY_API_SECRET=your-api-secret
+   ```
+7. Deploy and copy the backend URL
+
+#### Frontend Deployment (Vercel)
+
+1. Go to [vercel.com](https://vercel.com) and sign up
+2. Import your GitHub repository
+3. Configure:
+   - **Framework Preset:** Vite
+   - **Root Directory:** `.` (leave empty)
+4. Add Environment Variable:
+   ```
+   VITE_API_URL=https://your-backend-url.onrender.com/api
+   ```
+5. Deploy and copy the frontend URL
+
+#### Important Notes
+
+- **MongoDB Atlas:** Whitelist `0.0.0.0/0` in Network Access to allow Render's dynamic IPs
+- **CORS Configuration:** Update `CLIENT_URL` on Render to match your Vercel frontend URL
+- **Free Tier Limitations:** Render free tier spins down after 15 minutes of inactivity (takes ~30s to wake up)
+- **Environment Variables:** Both deployments require proper environment variables to function correctly
 
 ## 📞 Contact Information
 
