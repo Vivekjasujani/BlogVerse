@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import authService from '../../api/authService';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../store/authSlice';
@@ -6,6 +7,7 @@ import Loader from '../Loader';
 
 function LogoutBtn() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
   const logoutHandler = async () => {
@@ -13,6 +15,7 @@ function LogoutBtn() {
       setLoading(true);
       await authService.logout();
       dispatch(logout());
+      navigate('/');
     } catch (error) {
       console.error('Logout failed:', error);
     } finally {
@@ -25,8 +28,9 @@ function LogoutBtn() {
       <button
         className="py-2 px-5 bg-customPurple text-white rounded-lg shadow-lg duration-400 hover:drop-shadow-2xl hover:bg-white hover:text-black hover:cursor-pointer"
         onClick={logoutHandler}
+        disabled={loading}
       >
-        Logout
+        {loading ? 'Logging out...' : 'Logout'}
       </button>
     </>
   );
