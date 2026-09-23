@@ -109,8 +109,8 @@ The backend is built with Express.js and MongoDB, featuring:
 ## 🚀 Deployment
 
 ### Live Demo
-- **Frontend:** [BlogVerse](https://blog-verse-ee9w-pv5k4sc0z-vivekjasujanis-projects.vercel.app/)
-- **Backend API:** [BlogVerse API](https://blogverse-api-of87.onrender.com/)
+- **Frontend:** [BlogVerse](https://blog-verse-tau.vercel.app)
+- **Backend API:** [BlogVerse API](https://blogverse-api-yhet.onrender.com/)
 
 ### Deployment Guide
 
