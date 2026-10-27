@@ -21,6 +21,11 @@ const postService = {
     return normalizePost(data.post);
   },
 
+  async getSummary(slug) {
+    const { data } = await api.get(`/posts/${slug}/summary`);
+    return data.summary;
+  },
+
   async createPost(values) {
     const { data } = await api.post("/posts", toFormData(values), {
       headers: { "Content-Type": "multipart/form-data" },

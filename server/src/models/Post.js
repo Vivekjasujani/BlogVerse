@@ -8,6 +8,16 @@ const imageSchema = new mongoose.Schema(
   { _id: false }
 );
 
+const summarySchema = new mongoose.Schema(
+  {
+    text: { type: String, required: true, maxlength: 2_000 },
+    contentHash: { type: String, required: true },
+    model: { type: String },
+    generatedAt: { type: Date, required: true },
+  },
+  { _id: false }
+);
+
 const postSchema = new mongoose.Schema(
   {
     title: { type: String, required: true, trim: true, minlength: 3, maxlength: 160 },
@@ -17,6 +27,7 @@ const postSchema = new mongoose.Schema(
     status: { type: String, enum: ["active", "inactive"], default: "active" },
     author: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true, index: true },
     likesCount: { type: Number, default: 0, min: 0 },
+    summary: { type: summarySchema, select: false },
   },
   { timestamps: true }
 );
