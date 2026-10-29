@@ -6,6 +6,7 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 import { deleteImage, uploadImage } from "../utils/cloudinaryUpload.js";
 import { sanitizePostContent } from "../utils/content.js";
 import { slugify } from "../utils/slug.js";
+import { summarizePost } from "../utils/summarize.js";
 
 const populateAuthor = { path: "author", select: "name" };
 
@@ -53,6 +54,13 @@ export const getPost = asyncHandler(async (req, res) => {
   const post = await Post.findOne({ slug: req.params.slug, status: "active" }).populate(populateAuthor);
   if (!post) throw new ApiError(404, "Post not found.");
   res.json({ post });
+});
+
+export const getPostSummary = asyncHandler(async (req, res) => {
+  const post = await Post.findOne({ slug: req.params.slug, status: "active" }).select("title content").lean();
+  if (!post) throw new ApiError(404, "Post not found.");
+  const { summary, wordCount } = await summarizePost({ title: post.title, htmlContent: post.content });
+  res.json({ summary, wordCount });
 });
 
 export const createPost = asyncHandler(async (req, res) => {

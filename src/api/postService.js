@@ -21,9 +21,9 @@ const postService = {
     return normalizePost(data.post);
   },
 
-  async getSummary(slug) {
-    const { data } = await api.get(`/posts/${slug}/summary`);
-    return data.summary;
+  async getPostSummary(slug) {
+    const { data } = await api.get(`/posts/${encodeURIComponent(slug)}/summary`);
+    return data;
   },
 
   async createPost(values) {

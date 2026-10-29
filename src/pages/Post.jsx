@@ -7,7 +7,7 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import parse from "html-react-parser";
 import { useSelector } from "react-redux";
 import MiniLoader from "../Components/MiniLoader";
-import PostSummary from "../Components/PostSummary";
+import SummaryPanel from "../Components/SummaryPanel";
 import { GoBack } from "../Components/ui/goBack.jsx";
 import UserProfilePhoto from "../Components/ui/userProfilePhoto.jsx";
 import calculateReadingTime from "../utils/readingTime.js";
@@ -132,7 +132,7 @@ export default function Post() {
               </Button>
             </div>
           </div>
-          <PostSummary key={post.slug} slug={post.slug} />
+          <SummaryPanel key={post.slug} slug={post.slug} />
           <div className="browser-css text-left leading-relaxed">
             {parse(String(post.content))}
           </div>

@@ -16,12 +16,3 @@ export function sanitizePostContent(content) {
     allowedSchemesByTag: { img: ["http", "https"] },
   });
 }
-
-const HTML_ENTITIES = { "&amp;": "&", "&lt;": "<", "&gt;": ">", "&quot;": '"', "&#39;": "'", "&nbsp;": " " };
-
-export function htmlToPlainText(html = "") {
-  return sanitizeHtml(String(html).replace(/</g, " <"), { allowedTags: [], allowedAttributes: {} })
-    .replace(/&(amp|lt|gt|quot|#39|nbsp);/g, (entity) => HTML_ENTITIES[entity])
-    .replace(/\s+/g, " ")
-    .trim();
-}
