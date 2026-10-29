@@ -1,9 +1,11 @@
 import { Router } from "express";
+import rateLimit from "express-rate-limit";
 import {
   createPost,
   deletePost,
   getLikeStatus,
   getPost,
+  getPostSummary,
   listPosts,
   toggleLike,
   updatePost,
@@ -12,8 +14,16 @@ import { authenticate } from "../middleware/authenticate.js";
 import { featuredImageUpload } from "../middleware/upload.js";
 
 const router = Router();
+const summaryLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  limit: 10,
+  standardHeaders: "draft-7",
+  legacyHeaders: false,
+  message: { message: "Too many summary requests. You can request up to 10 summaries every 15 minutes; please try again later." },
+});
 
 router.get("/", listPosts);
+router.get("/:slug/summary", summaryLimiter, getPostSummary);
 router.get("/:slug", getPost);
 router.post("/", authenticate, featuredImageUpload, createPost);
 router.patch("/:postId", authenticate, featuredImageUpload, updatePost);

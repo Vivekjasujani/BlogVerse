@@ -21,6 +21,11 @@ const postService = {
     return normalizePost(data.post);
   },
 
+  async getPostSummary(slug) {
+    const { data } = await api.get(`/posts/${encodeURIComponent(slug)}/summary`);
+    return data;
+  },
+
   async createPost(values) {
     const { data } = await api.post("/posts", toFormData(values), {
       headers: { "Content-Type": "multipart/form-data" },
